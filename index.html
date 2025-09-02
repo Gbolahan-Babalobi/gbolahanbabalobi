@@ -4,163 +4,131 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Gbolahan Babalobi | Power BI Portfolio</title>
-  <meta name="description" content="Power BI portfolio by Gbolahan Babalobi: Maji Ndogo dashboards (Parts 1–4) from the ALX ExploreAI program." />
   <style>
-    :root {
-      --bg: #0f1221;
-      --card: #161a2f;
-      --ink: #e8ecff;
-      --muted: #aab3d9;
-      --accent: #6ea8fe;
-      --ring: rgba(110,168,254,0.35);
-    }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
-      color: var(--ink); background: radial-gradient(1200px 600px at 20% -10%, #1a1f3f 0%, #0f1221 60%) fixed, var(--bg);
-      line-height: 1.5;
-    }
-    header {
-      padding: 56px 20px 24px; text-align: center;
-    }
-    header h1 { margin: 0 0 8px; font-size: clamp(1.8rem, 2.5vw, 2.6rem); letter-spacing: 0.3px; }
-    header p { margin: 0; color: var(--muted); font-size: 1rem; }
-    .wrap { max-width: 1100px; margin: 0 auto; padding: 20px; }
-    .grid {
-      display: grid; gap: 20px;
-      grid-template-columns: repeat(12, 1fr);
-    }
-    .card {
-      grid-column: span 12; background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)), var(--card);
-      border: 1px solid rgba(255,255,255,0.06);
-      border-radius: 14px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.35);
-      transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
-    }
-    .card:hover { transform: translateY(-2px); box-shadow: 0 14px 38px rgba(0,0,0,0.45); border-color: var(--ring); }
-    .thumb {
-      width: 100%; aspect-ratio: 16 / 9; object-fit: cover; display: block; background:#0b0e1c;
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-    }
-    .body { padding: 16px 16px 18px; }
-    .title { margin: 0 0 6px; font-size: 1.15rem; }
-    .desc  { margin: 0 0 14px; color: var(--muted); font-size: 0.98rem; }
-    .badges { display:inline-flex; gap:8px; flex-wrap: wrap; margin-bottom: 12px; }
-    .badge {
-      font-size: 0.74rem; color: var(--ink); border:1px solid rgba(255,255,255,0.1);
-      padding: 3px 8px; border-radius: 999px; background: rgba(110,168,254,0.08);
-    }
-    .actions { display:flex; gap:10px; flex-wrap: wrap; }
-    .btn {
-      display:inline-flex; align-items:center; gap:8px; padding: 9px 12px;
-      border-radius:10px; border:1px solid rgba(255,255,255,0.12); color: var(--ink); text-decoration:none;
-      background: rgba(255,255,255,0.03); transition: border-color .2s ease, background .2s ease;
-      font-size: 0.95rem;
-    }
-    .btn:hover { border-color: var(--accent); background: rgba(110,168,254,0.10); }
-    .btn.secondary { background: transparent; }
-    footer { text-align:center; color: var(--muted); padding: 28px 16px 60px; font-size: 0.95rem; }
-    @media (min-width: 720px) {
-      .card { grid-column: span 6; }
-    }
-    @media (min-width: 1040px) {
-      .card { grid-column: span 6; }
-    }
+    body { margin:0; font-family:system-ui,Arial,sans-serif; background:#0f1221; color:#e8ecff; }
+    header { text-align:center; padding:40px 20px 20px; }
+    header h1 { margin:0; font-size:2rem; }
+    header p { margin:8px 0 0; color:#aab3d9; }
+    .wrap { max-width:1100px; margin:0 auto; padding:20px; }
+    .grid { display:grid; gap:20px; grid-template-columns:1fr; }
+    .card { background:#161a2f; border-radius:12px; overflow:hidden; box-shadow:0 10px 25px rgba(0,0,0,0.4); }
+    .carousel { position:relative; overflow:hidden; }
+    .carousel img { width:100%; display:none; object-fit:cover; aspect-ratio:16/9; }
+    .carousel img.active { display:block; }
+    .carousel button { position:absolute; top:50%; transform:translateY(-50%); background:rgba(0,0,0,0.5); border:none; color:white; font-size:1.4rem; padding:6px 10px; cursor:pointer; }
+    .carousel button.prev { left:10px; } 
+    .carousel button.next { right:10px; }
+    .body { padding:16px; }
+    .title { margin:0 0 8px; font-size:1.2rem; }
+    .desc { margin:0 0 12px; color:#aab3d9; font-size:0.95rem; }
+    .actions a { display:inline-block; margin-right:10px; padding:8px 12px; border-radius:6px; background:#6ea8fe20; color:#e8ecff; text-decoration:none; border:1px solid #6ea8fe40; font-size:0.9rem; }
+    .actions a:hover { background:#6ea8fe40; }
+    footer { text-align:center; padding:20px; font-size:0.9rem; color:#aab3d9; }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Gbolahan Babalobi</h1>
-    <p>Power BI Portfolio · ALX ExploreAI — Maji Ndogo Dashboards (Parts 1–4)</p>
-  </header>
+<header>
+  <h1>Gbolahan Babalobi</h1>
+  <p>Power BI Portfolio · ALX ExploreAI — Maji Ndogo Dashboards (Parts 1–4)</p>
+</header>
+<main class="wrap">
+  <section class="grid">
 
-  <main class="wrap">
-    <section class="grid">
-
-      <!-- Part 1 -->
-      <article class="card">
-        <img class="thumb" src="assets/maji_ndogo_part1.png" alt="Maji Ndogo Part 1 Dashboard Screenshot" />
-        <div class="body">
-          <h2 class="title">Maji Ndogo – Part 1: Exploring Access</h2>
-          <p class="desc">Survey-led overview of water access across rural/urban areas, gender roles in collection, and source reliance (home taps, shared taps, wells). Built with Power Query + DAX.</p>
-          <div class="badges">
-            <span class="badge">Power Query</span>
-            <span class="badge">DAX</span>
-            <span class="badge">Data Cleaning</span>
-          </div>
-          <div class="actions">
-            <a class="btn" href="https://github.com/gbolahanbabalobi/powerbi-projects/tree/main/maji-ndogo-part1" target="_blank" rel="noopener">GitHub Folder</a>
-            <a class="btn secondary" href="https://github.com/gbolahanbabalobi/powerbi-projects/blob/main/maji-ndogo-part1/maji_ndogo_part1.pbix" target="_blank" rel="noopener">Download PBIX</a>
-            <a class="btn secondary" href="assets/maji_ndogo_part1.png" target="_blank" rel="noopener">View Screenshot</a>
-          </div>
+    <!-- Part 1 -->
+    <div class="card">
+      <div class="carousel" data-carousel>
+        <img src="assets/part1_view1.png" class="active" alt="Part 1 View 1">
+        <img src="assets/part1_view2.png" alt="Part 1 View 2">
+        <img src="assets/part1_view3.png" alt="Part 1 View 3">
+        <button class="prev">&#10094;</button>
+        <button class="next">&#10095;</button>
+      </div>
+      <div class="body">
+        <h2 class="title">Maji Ndogo – Part 1: Exploring Access</h2>
+        <p class="desc">Survey-led overview of rural vs. urban water access, gender roles, and reliance on taps and wells. (3 dashboard views)</p>
+        <div class="actions">
+          <a href="https://github.com/gbolahanbabalobi/powerbi-projects/tree/main/maji-ndogo-part1">GitHub</a>
+          <a href="https://github.com/gbolahanbabalobi/powerbi-projects/blob/main/maji-ndogo-part1/maji_ndogo_part1.pbix">Download PBIX</a>
         </div>
-      </article>
+      </div>
+    </div>
 
-      <!-- Part 2 -->
-      <article class="card">
-        <img class="thumb" src="assets/maji_ndogo_part2.png" alt="Maji Ndogo Part 2 Dashboard Screenshot" />
-        <div class="body">
-          <h2 class="title">Maji Ndogo – Part 2: Insights for Leaders</h2>
-          <p class="desc">Decision-focused reporting answering who lacks access, what upgrades cost, and where funds should go—drilldowns by province, urban/rural, and source type.</p>
-          <div class="badges">
-            <span class="badge">Drilldown</span>
-            <span class="badge">Stakeholder Reporting</span>
-            <span class="badge">Cost Analysis</span>
-          </div>
-          <div class="actions">
-            <a class="btn" href="https://github.com/gbolahanbabalobi/powerbi-projects/tree/main/maji-ndogo-part2" target="_blank" rel="noopener">GitHub Folder</a>
-            <a class="btn secondary" href="https://github.com/gbolahanbabalobi/powerbi-projects/blob/main/maji-ndogo-part2/maji_ndogo_part2.pbix" target="_blank" rel="noopener">Download PBIX</a>
-            <a class="btn secondary" href="assets/maji_ndogo_part2.png" target="_blank" rel="noopener">View Screenshot</a>
-          </div>
+    <!-- Part 2 -->
+    <div class="card">
+      <div class="carousel" data-carousel>
+        <img src="assets/part2_view1.png" class="active" alt="Part 2 View 1">
+        <img src="assets/part2_view2.png" alt="Part 2 View 2">
+        <img src="assets/part2_view3.png" alt="Part 2 View 3">
+        <img src="assets/part2_view4.png" alt="Part 2 View 4">
+        <button class="prev">&#10094;</button>
+        <button class="next">&#10095;</button>
+      </div>
+      <div class="body">
+        <h2 class="title">Maji Ndogo – Part 2: Insights for Leaders</h2>
+        <p class="desc">Reports for leaders & governors: who lacks access, upgrade costs, and priority regions. (4 dashboard views)</p>
+        <div class="actions">
+          <a href="https://github.com/gbolahanbabalobi/powerbi-projects/tree/main/maji-ndogo-part2">GitHub</a>
+          <a href="https://github.com/gbolahanbabalobi/powerbi-projects/blob/main/maji-ndogo-part2/maji_ndogo_part2.pbix">Download PBIX</a>
         </div>
-      </article>
+      </div>
+    </div>
 
-      <!-- Part 3 -->
-      <article class="card">
-        <img class="thumb" src="assets/maji_ndogo_part3.png" alt="Maji Ndogo Part 3 Dashboard Screenshot" />
-        <div class="body">
-          <h2 class="title">Maji Ndogo – Part 3: Progress & Budget</h2>
-          <p class="desc">KPIs for % basic access and project completion, plus budget monitoring by province and improvement type. Transparency pages for progress and spend.</p>
-          <div class="badges">
-            <span class="badge">KPIs</span>
-            <span class="badge">Budget Tracking</span>
-            <span class="badge">Transparency</span>
-          </div>
-          <div class="actions">
-            <a class="btn" href="https://github.com/gbolahanbabalobi/powerbi-projects/tree/main/maji-ndogo-part3" target="_blank" rel="noopener">GitHub Folder</a>
-            <a class="btn secondary" href="https://github.com/gbolahanbabalobi/powerbi-projects/blob/main/maji-ndogo-part3/maji_ndogo_part3.pbix" target="_blank" rel="noopener">Download PBIX</a>
-            <a class="btn secondary" href="assets/maji_ndogo_part3.png" target="_blank" rel="noopener">View Screenshot</a>
-          </div>
+    <!-- Part 3 -->
+    <div class="card">
+      <div class="carousel" data-carousel>
+        <img src="assets/part3_view1.png" class="active" alt="Part 3 View 1">
+        <img src="assets/part3_view2.png" alt="Part 3 View 2">
+        <img src="assets/part3_view3.png" alt="Part 3 View 3">
+        <img src="assets/part3_view4.png" alt="Part 3 View 4">
+        <img src="assets/part3_view5.png" alt="Part 3 View 5">
+        <img src="assets/part3_view6.png" alt="Part 3 View 6">
+        <button class="prev">&#10094;</button>
+        <button class="next">&#10095;</button>
+      </div>
+      <div class="body">
+        <h2 class="title">Maji Ndogo – Part 3: Progress & Budget</h2>
+        <p class="desc">KPIs for population water access, project completion, and budget allocations across provinces. (6 dashboard views)</p>
+        <div class="actions">
+          <a href="https://github.com/gbolahanbabalobi/powerbi-projects/tree/main/maji-ndogo-part3">GitHub</a>
+          <a href="https://github.com/gbolahanbabalobi/powerbi-projects/blob/main/maji-ndogo-part3/maji_ndogo_part3.pbix">Download PBIX</a>
         </div>
-      </article>
+      </div>
+    </div>
 
-      <!-- Part 4 -->
-      <article class="card">
-        <img class="thumb" src="assets/maji_ndogo_part4.png" alt="Maji Ndogo Part 4 Dashboard Screenshot" />
-        <div class="body">
-          <h2 class="title">Maji Ndogo – Part 4: Accountability</h2>
-          <p class="desc">Finalized national & provincial reporting with interactive toggles, drill-throughs, and impact metrics linking spend to improved access outcomes.</p>
-          <div class="badges">
-            <span class="badge">Drill-through</span>
-            <span class="badge">Bookmarks</span>
-            <span class="badge">Impact Metrics</span>
-          </div>
-          <div class="actions">
-            <a class="btn" href="https://github.com/gbolahanbabalobi/powerbi-projects/tree/main/maji-ndogo-part4" target="_blank" rel="noopener">GitHub Folder</a>
-            <a class="btn secondary" href="https://github.com/gbolahanbabalobi/powerbi-projects/blob/main/maji-ndogo-part4/maji_ndogo_part4.pbix" target="_blank" rel="noopener">Download PBIX</a>
-            <a class="btn secondary" href="assets/maji_ndogo_part4.png" target="_blank" rel="noopener">View Screenshot</a>
-          </div>
+    <!-- Part 4 -->
+    <div class="card">
+      <div class="carousel" data-carousel>
+        <img src="assets/part4_view1.png" class="active" alt="Part 4 View 1">
+        <img src="assets/part4_view2.png" alt="Part 4 View 2">
+        <img src="assets/part4_view3.png" alt="Part 4 View 3">
+        <button class="prev">&#10094;</button>
+        <button class="next">&#10095;</button>
+      </div>
+      <div class="body">
+        <h2 class="title">Maji Ndogo – Part 4: Accountability</h2>
+        <p class="desc">Finalized reporting with interactive toggles, provincial drill-throughs, and impact-driven metrics. (7 dashboard views)</p>
+        <div class="actions">
+          <a href="https://github.com/gbolahanbabalobi/powerbi-projects/tree/main/maji-ndogo-part4">GitHub</a>
+          <a href="https://github.com/gbolahanbabalobi/powerbi-projects/blob/main/maji-ndogo-part4/maji_ndogo_part4.pbix">Download PBIX</a>
         </div>
-      </article>
+      </div>
+    </div>
 
-    </section>
-  </main>
-
-  <footer>
-    © <span id="y"></span> Gbolahan Babalobi · <a href="https://github.com/gbolahanbabalobi" target="_blank" rel="noopener" style="color: #c9d6ff;">GitHub</a>
-  </footer>
-
-  <script>
-    document.getElementById('y').textContent = new Date().getFullYear();
-  </script>
+  </section>
+</main>
+<footer>
+  © <span id="y"></span> Gbolahan Babalobi · <a href="https://github.com/gbolahanbabalobi" target="_blank">GitHub</a>
+</footer>
+<script>
+  document.getElementById('y').textContent = new Date().getFullYear();
+  // carousel logic
+  document.querySelectorAll('[data-carousel]').forEach(carousel => {
+    const imgs = carousel.querySelectorAll('img');
+    let idx = 0;
+    function show(i){ imgs.forEach((im,j)=>im.classList.toggle('active', j===i)); }
+    carousel.querySelector('.prev').onclick=()=>{ idx=(idx-1+imgs.length)%imgs.length; show(idx); };
+    carousel.querySelector('.next').onclick=()=>{ idx=(idx+1)%imgs.length; show(idx); };
+  });
+</script>
 </body>
 </html>
